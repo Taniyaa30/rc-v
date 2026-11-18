@@ -173,46 +173,60 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
 10 13 0 0
 7 13 4 0</dataString></testData></entry></elementAttributes><pos x="100" y="320"/></visualElement>
 
+    <!-- Splitters for a and b: outputs at x=180, y=100,120,140,160 and y=200,220,240,260 -->
     <visualElement><elementName>Splitter</elementName><elementAttributes><entry><string>Input Splitting</string><string>4</string></entry><entry><string>Output Splitting</string><string>1,1,1,1</string></entry></elementAttributes><pos x="160" y="100"/></visualElement>
     <visualElement><elementName>Splitter</elementName><elementAttributes><entry><string>Input Splitting</string><string>4</string></entry><entry><string>Output Splitting</string><string>1,1,1,1</string></entry></elementAttributes><pos x="160" y="200"/></visualElement>
 
+    <!-- Bitwise XNORs: inputs at x=260 (y, y+40), output at x=340, y+20 -->
     <visualElement><elementName>XNOr</elementName><elementAttributes/><pos x="260" y="60"/></visualElement>
     <visualElement><elementName>XNOr</elementName><elementAttributes/><pos x="260" y="120"/></visualElement>
     <visualElement><elementName>XNOr</elementName><elementAttributes/><pos x="260" y="180"/></visualElement>
     <visualElement><elementName>XNOr</elementName><elementAttributes/><pos x="260" y="240"/></visualElement>
+
+    <!-- 4-input AND for eq: inputs at x=380 (y=120,140,180,200), output at x=440, y=160 -->
     <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>4</int></entry></elementAttributes><pos x="380" y="120"/></visualElement>
 
+    <!-- Inverters for ~a0, ~a1, ~a2, ~a3, ~b3: input at x=260, output at x=300 -->
     <visualElement><elementName>Not</elementName><elementAttributes/><pos x="260" y="300"/></visualElement>
     <visualElement><elementName>Not</elementName><elementAttributes/><pos x="260" y="340"/></visualElement>
     <visualElement><elementName>Not</elementName><elementAttributes/><pos x="260" y="380"/></visualElement>
     <visualElement><elementName>Not</elementName><elementAttributes/><pos x="260" y="420"/></visualElement>
     <visualElement><elementName>Not</elementName><elementAttributes/><pos x="260" y="460"/></visualElement>
 
+    <!-- Unsigned less-than (ltu) product terms -->
     <visualElement><elementName>And</elementName><elementAttributes/><pos x="380" y="300"/></visualElement>
     <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry></elementAttributes><pos x="380" y="360"/></visualElement>
     <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>4</int></entry></elementAttributes><pos x="380" y="440"/></visualElement>
     <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>5</int></entry></elementAttributes><pos x="380" y="540"/></visualElement>
+    <!-- ltu OR: output at x=560, y=420 -->
     <visualElement><elementName>Or</elementName><elementAttributes><entry><string>Inputs</string><int>4</int></entry></elementAttributes><pos x="500" y="380"/></visualElement>
 
+    <!-- Signed less-than (lt) product terms -->
     <visualElement><elementName>And</elementName><elementAttributes/><pos x="380" y="660"/></visualElement>
     <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry></elementAttributes><pos x="380" y="720"/></visualElement>
     <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>4</int></entry></elementAttributes><pos x="380" y="800"/></visualElement>
     <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>5</int></entry></elementAttributes><pos x="380" y="900"/></visualElement>
+    <!-- lt OR: output at x=560, y=780 -->
     <visualElement><elementName>Or</elementName><elementAttributes><entry><string>Inputs</string><int>4</int></entry></elementAttributes><pos x="500" y="740"/></visualElement>
 
+    <!-- Negations: ~eq, ~ltu, ~lt (input x=620, output x=660) -->
     <visualElement><elementName>Not</elementName><elementAttributes/><pos x="620" y="200"/></visualElement>
     <visualElement><elementName>Not</elementName><elementAttributes/><pos x="620" y="440"/></visualElement>
     <visualElement><elementName>Not</elementName><elementAttributes/><pos x="620" y="800"/></visualElement>
     <visualElement><elementName>Const</elementName><elementAttributes><entry><string>Value</string><long>0</long></entry></elementAttributes><pos x="660" y="260"/></visualElement>
 
-    <visualElement><elementName>Multiplexer</elementName><elementAttributes><entry><string>Selector Bits</string><int>3</int></entry></elementAttributes><pos x="760" y="140"/></visualElement>
+    <!-- 8-to-1 Multiplexer at (760, 160):
+         sel at (780, 320), inputs 0..7 at x=760, y=160,180,200,220,240,260,280,300, output at (800, 240) -->
+    <visualElement><elementName>Multiplexer</elementName><elementAttributes><entry><string>Selector Bits</string><int>3</int></entry></elementAttributes><pos x="760" y="160"/></visualElement>
   </visualElements>
   <wires>
+    <!-- Input pins to splitters -->
     <wire><p1 x="100" y="100"/><p2 x="160" y="100"/></wire>
     <wire><p1 x="100" y="160"/><p2 x="140" y="160"/></wire>
     <wire><p1 x="140" y="160"/><p2 x="140" y="200"/></wire>
     <wire><p1 x="140" y="200"/><p2 x="160" y="200"/></wire>
 
+    <!-- a0..a3 fanout -->
     <wire><p1 x="180" y="100"/><p2 x="210" y="100"/></wire>
     <wire><p1 x="210" y="100"/><p2 x="210" y="60"/></wire>
     <wire><p1 x="210" y="60"/><p2 x="260" y="60"/></wire>
@@ -236,6 +250,7 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="240" y="240"/><p2 x="240" y="420"/></wire>
     <wire><p1 x="240" y="420"/><p2 x="260" y="420"/></wire>
 
+    <!-- b0..b3 fanout -->
     <wire><p1 x="180" y="200"/><p2 x="200" y="200"/></wire>
     <wire><p1 x="200" y="200"/><p2 x="200" y="100"/></wire>
     <wire><p1 x="200" y="100"/><p2 x="260" y="100"/></wire>
@@ -266,13 +281,14 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="225" y="280"/><p2 x="225" y="460"/></wire>
     <wire><p1 x="225" y="460"/><p2 x="260" y="460"/></wire>
 
-    <wire><p1 x="330" y="80"/><p2 x="350" y="80"/></wire>
+    <!-- XNOR outputs (x=340, y=80,140,200,260) to eq AND and comparators -->
+    <wire><p1 x="340" y="80"/><p2 x="350" y="80"/></wire>
     <wire><p1 x="350" y="80"/><p2 x="350" y="120"/></wire>
     <wire><p1 x="350" y="120"/><p2 x="380" y="120"/></wire>
 
-    <wire><p1 x="330" y="140"/><p2 x="380" y="140"/></wire>
+    <wire><p1 x="340" y="140"/><p2 x="380" y="140"/></wire>
 
-    <wire><p1 x="330" y="200"/><p2 x="350" y="200"/></wire>
+    <wire><p1 x="340" y="200"/><p2 x="350" y="200"/></wire>
     <wire><p1 x="350" y="200"/><p2 x="350" y="180"/></wire>
     <wire><p1 x="350" y="180"/><p2 x="380" y="180"/></wire>
     <wire><p1 x="350" y="200"/><p2 x="350" y="360"/></wire>
@@ -288,7 +304,7 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="350" y="800"/><p2 x="350" y="900"/></wire>
     <wire><p1 x="350" y="900"/><p2 x="380" y="900"/></wire>
 
-    <wire><p1 x="330" y="260"/><p2 x="360" y="260"/></wire>
+    <wire><p1 x="340" y="260"/><p2 x="360" y="260"/></wire>
     <wire><p1 x="360" y="260"/><p2 x="360" y="200"/></wire>
     <wire><p1 x="360" y="200"/><p2 x="380" y="200"/></wire>
     <wire><p1 x="360" y="260"/><p2 x="360" y="460"/></wire>
@@ -300,6 +316,7 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="360" y="820"/><p2 x="360" y="920"/></wire>
     <wire><p1 x="360" y="920"/><p2 x="380" y="920"/></wire>
 
+    <!-- eq (440, 160) to Mux[0] (760, 160) and ~eq to Mux[1] (760, 180) -->
     <wire><p1 x="440" y="160"/><p2 x="600" y="160"/></wire>
     <wire><p1 x="600" y="160"/><p2 x="760" y="160"/></wire>
     <wire><p1 x="600" y="160"/><p2 x="600" y="200"/></wire>
@@ -308,20 +325,24 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="730" y="200"/><p2 x="730" y="180"/></wire>
     <wire><p1 x="730" y="180"/><p2 x="760" y="180"/></wire>
 
+    <!-- Inverted inputs to ltu terms -->
     <wire><p1 x="300" y="300"/><p2 x="380" y="300"/></wire>
     <wire><p1 x="300" y="340"/><p2 x="380" y="380"/></wire>
     <wire><p1 x="300" y="380"/><p2 x="380" y="480"/></wire>
     <wire><p1 x="300" y="420"/><p2 x="380" y="600"/></wire>
 
-    <wire><p1 x="310" y="140"/><p2 x="310" y="580"/></wire>
-    <wire><p1 x="310" y="580"/><p2 x="380" y="580"/></wire>
-    <wire><p1 x="310" y="580"/><p2 x="310" y="940"/></wire>
-    <wire><p1 x="310" y="940"/><p2 x="380" y="940"/></wire>
+    <!-- eq3 (340, 260) via x=360 to MSB terms -->
+    <wire><p1 x="360" y="260"/><p2 x="360" y="580"/></wire>
+    <wire><p1 x="360" y="580"/><p2 x="380" y="580"/></wire>
+    <wire><p1 x="360" y="580"/><p2 x="360" y="940"/></wire>
+    <wire><p1 x="360" y="940"/><p2 x="380" y="940"/></wire>
 
+    <!-- ~b3 (300, 460) to ltu MSB term -->
     <wire><p1 x="300" y="460"/><p2 x="335" y="460"/></wire>
     <wire><p1 x="335" y="460"/><p2 x="335" y="620"/></wire>
     <wire><p1 x="335" y="620"/><p2 x="380" y="620"/></wire>
 
+    <!-- Signed lt terms (a3 and b3 swapped with ~a3 and ~b3) -->
     <wire><p1 x="210" y="300"/><p2 x="210" y="660"/></wire>
     <wire><p1 x="210" y="660"/><p2 x="380" y="660"/></wire>
     <wire><p1 x="300" y="340"/><p2 x="290" y="340"/></wire>
@@ -336,6 +357,7 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="225" y="460"/><p2 x="225" y="980"/></wire>
     <wire><p1 x="225" y="980"/><p2 x="380" y="980"/></wire>
 
+    <!-- ltu ANDs to ltu OR -->
     <wire><p1 x="440" y="320"/><p2 x="470" y="320"/></wire>
     <wire><p1 x="470" y="320"/><p2 x="470" y="380"/></wire>
     <wire><p1 x="470" y="380"/><p2 x="500" y="380"/></wire>
@@ -349,6 +371,7 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="480" y="580"/><p2 x="480" y="460"/></wire>
     <wire><p1 x="480" y="460"/><p2 x="500" y="460"/></wire>
 
+    <!-- lt ANDs to lt OR -->
     <wire><p1 x="440" y="680"/><p2 x="470" y="680"/></wire>
     <wire><p1 x="470" y="680"/><p2 x="470" y="740"/></wire>
     <wire><p1 x="470" y="740"/><p2 x="500" y="740"/></wire>
@@ -362,11 +385,13 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="480" y="940"/><p2 x="480" y="820"/></wire>
     <wire><p1 x="480" y="820"/><p2 x="500" y="820"/></wire>
 
+    <!-- Const 0 to Mux[2] (760, 200) and Mux[3] (760, 220) -->
     <wire><p1 x="660" y="260"/><p2 x="740" y="260"/></wire>
     <wire><p1 x="740" y="260"/><p2 x="740" y="200"/></wire>
     <wire><p1 x="740" y="200"/><p2 x="760" y="200"/></wire>
     <wire><p1 x="740" y="220"/><p2 x="760" y="220"/></wire>
 
+    <!-- lt (560, 780) to Mux[4] (760, 240) and ~lt to Mux[5] (760, 260) -->
     <wire><p1 x="560" y="780"/><p2 x="600" y="780"/></wire>
     <wire><p1 x="600" y="780"/><p2 x="600" y="240"/></wire>
     <wire><p1 x="600" y="240"/><p2 x="760" y="240"/></wire>
@@ -376,6 +401,7 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="745" y="800"/><p2 x="745" y="260"/></wire>
     <wire><p1 x="745" y="260"/><p2 x="760" y="260"/></wire>
 
+    <!-- ltu (560, 420) to Mux[6] (760, 280) and ~ltu to Mux[7] (760, 300) -->
     <wire><p1 x="560" y="420"/><p2 x="610" y="420"/></wire>
     <wire><p1 x="610" y="420"/><p2 x="610" y="280"/></wire>
     <wire><p1 x="610" y="280"/><p2 x="760" y="280"/></wire>
@@ -385,13 +411,14 @@ Do not rename, move or delete the input and output pins.</string></entry></eleme
     <wire><p1 x="750" y="440"/><p2 x="750" y="300"/></wire>
     <wire><p1 x="750" y="300"/><p2 x="760" y="300"/></wire>
 
+    <!-- funct3 (100, 220) to Mux sel (780, 320) -->
     <wire><p1 x="100" y="220"/><p2 x="120" y="220"/></wire>
     <wire><p1 x="120" y="220"/><p2 x="120" y="320"/></wire>
     <wire><p1 x="120" y="320"/><p2 x="780" y="320"/></wire>
-    <wire><p1 x="780" y="320"/><p2 x="780" y="300"/></wire>
 
-    <wire><p1 x="800" y="230"/><p2 x="860" y="230"/></wire>
-    <wire><p1 x="860" y="230"/><p2 x="860" y="100"/></wire>
+    <!-- Mux output (800, 240) to take (900, 100) -->
+    <wire><p1 x="800" y="240"/><p2 x="860" y="240"/></wire>
+    <wire><p1 x="860" y="240"/><p2 x="860" y="100"/></wire>
     <wire><p1 x="860" y="100"/><p2 x="900" y="100"/></wire>
   </wires>
   <measurementOrdering/>
